@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="english">
+<head>
+  <title>Lilies in Pink - Sarah's Flowers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Tenor Sans', sans-serif;
+      margin: 0;
+      background-color: #fff5f5;
+      color: #d45a74;
+    }
+
+       header {
+      background-color: #ffe2db;
+      padding: 0.5rem 1.5rem 1rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .menu-button {
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: #d45a74;
+    }
+
+    .header-buttons {
+      position: absolute;
+      bottom: 1.2rem;
+      right: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.3rem;
+    }
+
+    .header-icons {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .header-icons img {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      padding: 0.2rem;
+    }
+
+    .search-bar {
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      font-size: 0.75rem;
+      width: 120px;
+    }
+
+    .logo img {
+      height: 100px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+      position: relative;
+    }
+
+    .search-container {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    nav a {
+      color: #d45a74;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 2rem;
+      gap: 2rem;
+    }
+
+    .image-section {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .main-image {
+      width: 100%;
+      border-radius: 20px;
+    }
+
+    .thumbnail-images {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .thumbnail-images img {
+      width: 80px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .details-section {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .details-section h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      margin: 0.5rem 0;
+    }
+
+    .stars {
+      color: gold;
+    }
+
+    .description {
+      margin: 1rem 0;
+      color: #d45a74;
+    }
+
+    .option-group {
+      margin-bottom: 1rem;
+    }
+
+    select {
+      padding: 0.5rem;
+      border-radius: 20px;
+      border: 1px solid #d45a74;
+      background-color: #fff;
+      color: #d45a74;
+      width: 100%;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid #f0caca;
+      background-color: #fff0f0;
+      resize: none;
+      font-size: 1rem;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .quantity button {
+      width: 32px;
+      height: 32px;
+      border: none;
+      background-color: #f0caca;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .quantity input {
+      width: 40px;
+      text-align: center;
+      font-size: 1rem;
+      border: none;
+      background-color: transparent;
+    }
+
+    .add-to-cart {
+      padding: 1rem 2rem;
+      background-color: #d45a74;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <button class="menu-button">&#9776;</button>
+    <div class="header-buttons">
+      <div class="header-icons">
+        <img src="accounticon.png" alt="Account" title="Account">
+        <img src="carticon.png" alt="Cart" title="Cart">
+      </div>
+      <input type="text" class="search-bar" placeholder="Search...">
+    </div>
+    <div class="logo">
+      <img src="Black and Pink Flower Shop Logo (1) - Copy.png" alt="Sarah's Flowers Logo">
+    </div>
+    <nav>
+      <a href="homepagetest.html">Home</a>
+      <a href="bouquet.html">Bouquets</a>
+      <a href="#">Shop All</a>
+      <a href="#">Limited Edition</a>
+      <a href="#">Gift</a>
+      <a href="#">Contact Us</a>
+    </nav>
+  </header>
+
+   <div class="container">
+    <div class="image-section">
+      <img src="lilies.jpeg" alt="Lilies in Pink" class="main-image" id="mainImage">
+      <div class="thumbnail-images">
+        <img src="lilies.jpeg" alt="Thumb 1" onclick="changeImage('lilies.jpeg')">
+        <img src="lillies2.png" alt="Thumb 2" onclick="changeImage('lillies2.png')">
+        <img src="lilies3.jpg" alt="Thumb 3" onclick="changeImage('lilies3.jpg')">
+      </div>
+    </div>
+    <div class="details-section">
+      <h1 id="productName">Lilies in Pink</h1>
+      <p class="price" id="productPrice">$59.95</p>
+      <p class="stars">⭐️⭐️⭐️⭐️⭐️ 150 Reviews</p>
+      <p class="description">
+        A simple, yet stunning collection of pink Asiatic lilies - ideal for any occasion.
+        All of our flowers are fresh as can be, buds may be sent closed. This protects the flowers during transit and increases their vase life, ensuring this fairy floss pink bouquet will arrive in pristine condition
+      </p>
+
+      <div class="option-group">
+        <label>Balloons</label>
+        <select id="balloonSelect">
+          <option>No Balloon</option>
+          <option>Happy Birthday</option>
+          <option>Congratulations</option>
+        </select>
+      </div>
+
+      <div class="option-group">
+        <label>Ribbon</label>
+        <select id="ribbonSelect">
+          <option>No Ribbon</option>
+          <option>Pink Ribbon</option>
+          <option>Gold Ribbon</option>
+        </select>
+      </div>
+
+      <div class="option-group">
+        <label>Chocolate</label>
+        <select id="chocolateSelect">
+          <option>No Chocolate</option>
+          <option>Milk</option>
+          <option>Dark</option>
+        </select>
+      </div>
+
+      <div class="option-group">
+        <label>Stuffed Toy</label>
+        <select id="toySelect">
+          <option>No Stuffed Toy</option>
+          <option>Teddy Bear</option>
+        </select>
+      </div>
+
+      <div class="option-group">
+        <label>Other</label>
+        <select id="otherSelect">
+          <option>No Item</option>
+          <option>Greeting Card</option>
+        </select>
+      </div>
+
+      <div class="option-group">
+        <label>Message (Optional)</label>
+        <textarea id="messageInput" maxlength="200" placeholder="Type your message here"></textarea>
+      </div>
+
+      <div class="quantity">
+        <button onclick="changeQty(-1)">-</button>
+        <input type="text" id="qty" value="1" readonly>
+        <button onclick="changeQty(1)">+</button>
+      </div>
+
+      <button class="add-to-cart" onclick="addToCart()">ADD TO CART</button>
+    </div>
+  </div>
+
+  <script>
+    function changeImage(src) {
+      document.getElementById('mainImage').src = src;
+    }
+
+    function changeQty(delta) {
+      const qtyInput = document.getElementById('qty');
+      let current = parseInt(qtyInput.value);
+      qtyInput.value = Math.max(1, current + delta);
+    }
+
+    function addToCart() {
+      const item = {
+        name: document.getElementById('productName').innerText,
+        price: 59.95,
+        qty: parseInt(document.getElementById('qty').value),
+        balloon: document.getElementById('balloonSelect').value,
+        ribbon: document.getElementById('ribbonSelect').value,
+        chocolate: document.getElementById('chocolateSelect').value,
+        toy: document.getElementById('toySelect').value,
+        other: document.getElementById('otherSelect').value,
+        message: document.getElementById('messageInput').value
+      };
+      localStorage.setItem('cartItem', JSON.stringify(item));
+      window.location.href = 'cartpage.html';
+    }
+  </script>
+</body>
+</html>

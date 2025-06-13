@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="english">
+<head>
+  <title>Cart - Sarah's Flowers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Tenor Sans', sans-serif;
+      margin: 0;
+      background-color: #ffffff;
+      color: #d45a74;
+    }
+    header {
+      background-color: #ffe2db;
+      padding: 0.5rem 1.5rem 1rem;
+      text-align: center;
+      position: relative;
+    }
+    .menu-button {
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: #d45a74;
+    }
+    .header-buttons {
+      position: absolute;
+      bottom: 1.2rem;
+      right: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.3rem;
+    }
+    .header-icons {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .header-icons img {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      padding: 0.2rem;
+    }
+    .search-bar {
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      font-size: 0.75rem;
+      width: 120px;
+    }
+    .logo img {
+      height: 100px;
+      display: block;
+      margin: 0 auto;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      color: #d45a74;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    h2 {
+      text-align: center;
+      margin: 2rem 0;
+      font-size: 2rem;
+      font-weight: 400;
+    }
+    .cart-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px solid #f0caca;
+    }
+    .item-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .item-info img {
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
+    }
+    .item-details {
+      display: flex;
+      flex-direction: column;
+    }
+    .item-title {
+      font-size: 1.2rem;
+    }
+    .item-price {
+      color: #999;
+      font-size: 0.9rem;
+    }
+    .item-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .item-actions button {
+      width: 30px;
+      height: 30px;
+      background-color: #f0caca;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .item-actions input {
+      width: 40px;
+      text-align: center;
+      font-size: 1rem;
+      background: none;
+      border: none;
+    }
+    .summary {
+      text-align: right;
+      margin-top: 2rem;
+    }
+    .summary p {
+      margin: 0.2rem 0;
+    }
+    .checkout-btn {
+      margin-top: 1rem;
+      padding: 1rem 2rem;
+      background-color: #d45a74;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <button class="menu-button">&#9776;</button>
+    <div class="header-buttons">
+      <div class="header-icons">
+        <img src="accounticon.png" alt="Account" title="Account">
+        <img src="carticon.png" alt="Cart" title="Cart">
+      </div>
+      <input type="text" class="search-bar" placeholder="Search...">
+    </div>
+    <div class="logo">
+      <img src="Black and Pink Flower Shop Logo (1) - Copy.png" alt="Sarah's Flowers Logo">
+    </div>
+    <nav>
+      <a href="homepagetest.html">Home</a>
+      <a href="bouquet.html">Bouquets</a>
+      <a href="#">Shop All</a>
+      <a href="#">Limited Edition</a>
+      <a href="#">Gift</a>
+      <a href="#">Contact Us</a>
+    </nav>
+  </header>
+
+  <h2>Your Shopping Cart</h2>
+
+  <div class="cart-content">
+    <div class="cart-item">
+      <div class="item-info">
+        <img src="lilies.jpeg" alt="Lilies in Pink">
+        <div class="item-details">
+          <span class="item-title">Lilies in Pink</span>
+          <span class="item-price">$59.95</span>
+        </div>
+      </div>
+      <div class="item-actions">
+        <button onclick="changeQty(-1)">-</button>
+        <input type="text" id="qty" value="1" readonly>
+        <button onclick="changeQty(1)">+</button>
+      </div>
+    </div>
+
+    <div class="summary" id="summary">
+      <p>Subtotal: $59.95</p>
+      <p>Shipping: $9.95</p>
+      <p><strong>Total: $69.90</strong></p>
+      <a href="Checkout.html" class="checkout-btn" onclick="saveCartToStorage()">PROCEED TO CHECKOUT</a>
+    </div>
+  </div>
+
+  <script>
+    function changeQty(delta) {
+      const qtyInput = document.getElementById('qty');
+      let qty = parseInt(qtyInput.value);
+      qty = Math.max(1, qty + delta);
+      qtyInput.value = qty;
+      updateSummary(qty);
+    }
+
+    function updateSummary(qty) {
+      const itemPrice = 59.95;
+      const shipping = 9.95;
+      const subtotal = itemPrice * qty;
+      const total = subtotal + shipping;
+
+      document.getElementById('summary').innerHTML = `
+        <p>Subtotal: $${subtotal.toFixed(2)}</p>
+        <p>Shipping: $${shipping.toFixed(2)}</p>
+        <p><strong>Total: $${total.toFixed(2)}</strong></p>
+        <a href="Checkout.html" class="checkout-btn" onclick="saveCartToStorage()">PROCEED TO CHECKOUT</a>
+      `;
+    }
+
+    function saveCartToStorage() {
+      const qty = parseInt(document.getElementById('qty').value);
+      const cartItem = {
+        name: 'Lilies in Pink',
+        price: 59.95 * qty,
+        qty: qty
+      };
+      localStorage.setItem('cartItem', JSON.stringify(cartItem));
+    }
+
+    // Save cart on page load (optional)
+    saveCartToStorage();
+  </script>
+
+</body>
+</html>

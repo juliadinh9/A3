@@ -1,0 +1,221 @@
+<!DOCTYPE html> 
+<html lang="english">
+<head>
+  <title>Sarah's Flowers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Tenor Sans', sans-serif;
+      background-color: #fff0f0;
+    }
+
+    header {
+      background-color: #ffe2db;
+      padding: 0.5rem 1.5rem 1rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .menu-button {
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: #d45a74;
+    }
+
+    .header-buttons {
+      position: absolute;
+      bottom: 1.2rem;
+      right: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.3rem;
+    }
+
+    .header-icons {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .header-icons img {
+      width: 30px;
+      height: 30px;
+      padding: 0.2rem;
+    }
+
+    .search-bar {
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      font-size: 0.75rem;
+      width: 120px;
+    }
+
+    .logo img {
+      height: 100px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+      position: relative;
+    }
+
+    .search-container {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    nav a {
+      color: #d45a74;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .banner {
+      background: url("FlowerBanner.jpeg") center center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5rem;
+      color: white;
+    }
+
+    .banner-text {
+      max-width: 50%;
+    }
+
+    .banner-text h1 {
+      font-size: 3rem;
+      font-weight: 300;
+      margin: 0 0 1rem;
+      text-shadow: 2px 2px 4px #D94848;
+    }
+
+    .banner-text a {
+      padding: 1rem 2rem;
+      background-color: #D94848;
+      color: white;
+      font-size: 1rem;
+      border-radius: 30px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .banner img {
+      max-width: 45%;
+      border-radius: 20px;
+    }
+
+    .occasion-section {
+      text-align: left;
+      padding: 3rem 1rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .occasion-section h2 {
+      color: #D94848;
+      margin-bottom: 0.5rem;
+      margin-left: 1rem;
+    }
+
+    .occasion-section p {
+      margin-bottom: 2rem;
+      margin-left: 1rem;
+      color: #555;
+    }
+
+    .occasions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .occasion {
+      width: 120px;
+      text-align: center;
+    }
+
+    .occasion img {
+      width: 100%;
+      border-radius: 50%;
+    }
+
+    .occasion span {
+      display: block;
+      margin-top: 0.5rem;
+      color: #D94848;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <button class="menu-button">&#9776;</button>
+    <div class="header-buttons">
+      <div class="header-icons">
+        <img src="accounticon.png" alt="Account" title="Account">
+        <img src="carticon.png" alt="Cart" title="Cart">
+      </div>
+      <input type="text" class="search-bar" placeholder="Search...">
+    </div>
+    <div class="logo">
+      <img src="Black and Pink Flower Shop Logo (1) - Copy.png" alt="Sarah's Flowers Logo">
+    </div>
+    <nav>
+      <a href="homepagetest.html">Home</a>
+      <a href="Bouquet.html">Bouquets</a>
+      <a href="#">Shop All</a>
+      <a href="#">Limited Edition</a>
+      <a href="#">Gift</a>
+      <a href="#">Contact Us</a>
+    </nav>
+  </header>
+
+  <section class="banner">
+    <div class="banner-text">
+      <h1>Same Day Delivery</h1>
+      <a href="Bouquet.html">SHOP BOUQUETS</a>
+    </div>
+  </section>
+
+  <section class="occasion-section">
+    <h2>Shop by Occasion</h2>
+    <p>Celebrate special days with a beautiful bouquet.</p>
+    <div class="occasions">
+      <div class="occasion">
+        <img src="flower1.jpeg" alt="Shop All">
+        <span>Shop All</span>
+      </div>
+      <div class="occasion">
+        <img src="flower2.jpeg" alt="Anniversary">
+        <span>Anniversary</span>
+      </div>
+      <div class="occasion">
+        <img src="flower3.png" alt="Birthday">
+        <span>Happy Birthday</span>
+      </div>
+      <div class="occasion">
+        <img src="flower4.png" alt="Congratulations">
+        <span>Congratulations</span>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

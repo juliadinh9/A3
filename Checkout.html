@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout - Sarah's Flowers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Tenor Sans', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #ffefec;
+      color: #e05260;
+    }
+
+    .checkout-container {
+      display: flex;
+      flex-direction: row;
+      padding: 2rem;
+      gap: 2rem;
+    }
+
+    .form-section {
+      flex: 2;
+      padding: 1.5rem;
+    }
+
+    .cart-section {
+      flex: 1;
+      background: #ffffff;
+      padding: 1.5rem;
+      border-radius: 10px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 1rem;
+    }
+
+    textarea, input, select {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.25rem;
+      border: 2px solid #e05260;
+      border-radius: 10px;
+      background-color: #fff;
+    }
+
+    .row {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .row input, .row select {
+      flex: 1;
+    }
+
+    .payment-icons {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .payment-icons img {
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    .pay-btn {
+      background-color: #e05260;
+      color: white;
+      border: none;
+      padding: 1rem;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .cart-item img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-right: 1rem;
+    }
+
+    .cart-summary p {
+      margin: 0.25rem 0;
+      font-size: 1rem;
+    }
+
+    .total {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .apply-code {
+      display: flex;
+      margin: 1rem 0;
+    }
+
+    .apply-code input {
+      flex: 1;
+      margin-right: 0.5rem;
+    }
+
+    .apply-code button {
+      padding: 0.75rem;
+      border: none;
+      background-color: #e05260;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="checkout-container">
+    <div class="form-section">
+     <img src="lightlogo.png".png" alt="Sarah's Flowers Logo" style="width: 250px; margin-bottom: 1rem;">
+
+      <label for="giftMessage">Update your Gift Message</label>
+      <textarea id="giftMessage" maxlength="200" placeholder="Previous Message"></textarea>
+      <small>200 Characters</small>
+
+      <label>Contact Information</label>
+      <input type="email" placeholder="Your email address">
+
+      <label>Delivery Address</label>
+      <input type="text" placeholder="Country">
+      <div class="row">
+        <input type="text" placeholder="First Name">
+        <input type="text" placeholder="Last Name">
+      </div>
+      <input type="text" placeholder="Address">
+      <div class="row">
+        <input type="text" placeholder="Postcode">
+        <input type="text" placeholder="Suburb">
+        <select>
+          <option>State</option>
+          <option>NSW</option>
+          <option>VIC</option>
+          <option>QLD</option>
+          <option>WA</option>
+          <option>SA</option>
+          <option>TAS</option>
+          <option>ACT</option>
+          <option>NT</option>
+        </select>
+      </div>
+      <input type="tel" placeholder="Phone Number">
+
+      <label>Payment</label>
+      <div class="payment-icons">
+        <img src="https://img.icons8.com/color/48/000000/mastercard-logo.png"/>
+        <img src="https://img.icons8.com/color/48/000000/paypal.png"/>
+        <img src="https://img.icons8.com/color/48/000000/visa.png"/>
+        <img src="https://img.icons8.com/color/48/000000/amex.png"/>
+      </div>
+      <input type="text" placeholder="Card Number">
+      <div class="row">
+        <input type="text" placeholder="Expiration Date (MM/YY)">
+        <input type="text" placeholder="Security Code">
+      </div>
+      <input type="text" placeholder="Name on Card">
+
+      <button class="pay-btn">PAY NOW</button>
+    </div>
+
+    <div class="cart-section">
+      <h2>Your Cart</h2>
+      <div id="cartItems"></div>
+
+      <div class="apply-code">
+        <input type="text" placeholder="Gift Card or Discount Code">
+        <button>APPLY</button>
+      </div>
+
+      <div class="cart-summary">
+        <p>Subtotal: <span id="subtotal">$0.00</span></p>
+        <p>Shipping: <span id="shipping">$0.00</span></p>
+        <p class="total">Total: <span id="total">$0.00</span></p>
+        <p style="font-size: 0.9rem; color: gray;">(Same day delivery for orders before 5pm)</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function loadCart() {
+      const item = JSON.parse(localStorage.getItem('cartItem'));
+      const cartContainer = document.getElementById('cartItems');
+      const subtotalEl = document.getElementById('subtotal');
+      const shippingEl = document.getElementById('shipping');
+      const totalEl = document.getElementById('total');
+
+      if (!item) {
+        cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+        return;
+      }
+
+      const addOns = [];
+      if (item.balloon && item.balloon !== 'No Balloon') {
+        addOns.push({ name: item.balloon + ' Balloon', price: 19.95, img: 'balloon.jpg' });
+      }
+      if (item.toy && item.toy !== 'No Stuffed Toy') {
+        addOns.push({ name: item.toy, price: 29.95, img: 'teddy.jpg' });
+      }
+
+      const itemsHTML = `
+        <div class="cart-item">
+          <img src="lilies.jpeg" alt="${item.name}">
+          <div>
+            <p>${item.name}</p>
+            <p>$${item.price.toFixed(2)}</p>
+          </div>
+        </div>
+        ${addOns.map(add => `
+          <div class="cart-item">
+            <img src="${add.img}" alt="${add.name}">
+            <div>
+              <p>${add.name}</p>
+              <p>$${add.price.toFixed(2)}</p>
+            </div>
+          </div>
+        `).join('')}
+      `;
+
+      cartContainer.innerHTML = itemsHTML;
+
+      const subtotal = item.price + addOns.reduce((sum, a) => sum + a.price, 0);
+      const shipping = 22.95;
+      const total = subtotal + shipping;
+
+      subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+      shippingEl.textContent = `$${shipping.toFixed(2)}`;
+      totalEl.textContent = `$${total.toFixed(2)}`;
+    }
+
+    loadCart();
+  </script>
+
+</body>
+</html>
